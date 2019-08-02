@@ -1,0 +1,52 @@
+package ${basePackageName}.service.basic.impl;
+
+
+import ${model};
+import ${mapper}Mapper;
+
+import ${basePackageName}.service.basic.${simpleModel}BasicService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.alibaba.fastjson.JSON;
+@Service
+public class ${simpleModel}BasicServiceImpl implements ${simpleModel}BasicService {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    private ${simpleModel}Mapper ${simpleModuleVar}Mapper;
+
+    @Override
+    public int deleteByPrimaryKey(Integer id) {
+        return ${simpleModuleVar}Mapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int insert(${simpleModel} record) {
+        logger.info("插入${simpleModel}【${simpleModel}:{}】", JSON.toJSONString(record));
+        return ${simpleModuleVar}Mapper.insert(record);
+    }
+
+    @Override
+    public int insertSelective(${simpleModel} record) {
+        return ${simpleModuleVar}Mapper.insertSelective(record);
+    }
+
+    @Override
+    public ${simpleModel} selectByPrimaryKey(Integer id) {
+        return ${simpleModuleVar}Mapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(${simpleModel} record) {
+        return ${simpleModuleVar}Mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(${simpleModel} record) {
+        return ${simpleModuleVar}Mapper.updateByPrimaryKey(record);
+    }
+
+}

@@ -1,0 +1,20 @@
+package ${basePackageName}.service.basic;
+
+import ${model};
+
+
+public interface ${simpleModel}BasicService  {
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(${simpleModel} record);
+
+    int insertSelective(${simpleModel} record);
+
+    ${simpleModel} selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(${simpleModel} record);
+
+    int updateByPrimaryKey(${simpleModel} record);
+
+}

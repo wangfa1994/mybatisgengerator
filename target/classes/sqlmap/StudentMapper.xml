@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.souche.scrmcommon.friendrelation.dao.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.souche.scrmcommon.friendrelation.model.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="stu_age" property="stuAge" jdbcType="INTEGER" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="prices" property="prices" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.souche.scrmcommon.friendrelation.model.Student" extends="BaseResultMap" >
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+    <result column="re" property="re" jdbcType="LONGVARCHAR" />
+    <result column="res" property="res" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, `name`, stu_age, birthday, price, prices
+  </sql>
+  <sql id="Blob_Column_List" >
+    remark, re, res
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.souche.scrmcommon.friendrelation.model.Student" >
+    insert into student (id, `name`, stu_age, 
+      birthday, price, prices, 
+      remark, re, res
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{stuAge,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{price,jdbcType=DOUBLE}, #{prices,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=LONGVARCHAR}, #{re,jdbcType=LONGVARCHAR}, #{res,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.souche.scrmcommon.friendrelation.model.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        `name`,
+      </if>
+      <if test="stuAge != null" >
+        stu_age,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="prices != null" >
+        prices,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="re != null" >
+        re,
+      </if>
+      <if test="res != null" >
+        res,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stuAge != null" >
+        #{stuAge,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="prices != null" >
+        #{prices,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="re != null" >
+        #{re,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="res != null" >
+        #{res,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.souche.scrmcommon.friendrelation.model.Student" >
+    update student
+    <set >
+      <if test="name != null" >
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stuAge != null" >
+        stu_age = #{stuAge,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="prices != null" >
+        prices = #{prices,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="re != null" >
+        re = #{re,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="res != null" >
+        res = #{res,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.souche.scrmcommon.friendrelation.model.Student" >
+    update student
+    set `name` = #{name,jdbcType=VARCHAR},
+      stu_age = #{stuAge,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      price = #{price,jdbcType=DOUBLE},
+      prices = #{prices,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=LONGVARCHAR},
+      re = #{re,jdbcType=LONGVARCHAR},
+      res = #{res,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.souche.scrmcommon.friendrelation.model.Student" >
+    update student
+    set `name` = #{name,jdbcType=VARCHAR},
+      stu_age = #{stuAge,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      price = #{price,jdbcType=DOUBLE},
+      prices = #{prices,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

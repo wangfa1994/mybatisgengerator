@@ -1,0 +1,11 @@
+1、执行MyCommentGeneratorMain 方法 生成mybatis相关
+2、如果需要生成对应的basicService,生成mybatis相关之后，再执行BasicBussinessServiceGeneratorMain 方法
+
+
+
+功能
+1.新增了model 带中文参数
+2.MySQL关键字自动识别并添加单引号
+3.解决text-->blog问题
+
+
