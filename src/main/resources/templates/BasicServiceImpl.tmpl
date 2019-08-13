@@ -25,27 +25,31 @@ public class ${simpleModel}BasicServiceImpl implements ${simpleModel}BasicServic
 
     @Override
     public int insert(${simpleModel} record) {
-        logger.info("插入${simpleModel}【${simpleModel}:{}】", JSON.toJSONString(record));
+        logger.info("insert 插入${simpleModel}【${simpleModel}:{}】", JSON.toJSONString(record));
         return ${simpleModuleVar}Mapper.insert(record);
     }
 
     @Override
     public int insertSelective(${simpleModel} record) {
+        logger.info("insertSelective 插入${simpleModel}【${simpleModel}:{}】", JSON.toJSONString(record));
         return ${simpleModuleVar}Mapper.insertSelective(record);
     }
 
     @Override
     public ${simpleModel} selectByPrimaryKey(Integer id) {
+        logger.info("根据Id查询${simpleModel}【id:{}】", id);
         return ${simpleModuleVar}Mapper.selectByPrimaryKey(id);
     }
 
     @Override
     public int updateByPrimaryKeySelective(${simpleModel} record) {
+        logger.info("updateByPrimaryKeySelective 根据Id更新${simpleModel}【${simpleModel}:{}】", JSON.toJSONString(record));
         return ${simpleModuleVar}Mapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(${simpleModel} record) {
+        logger.info("updateByPrimaryKey 根据Id更新${simpleModel}【${simpleModel}:{}】", JSON.toJSONString(record));
         return ${simpleModuleVar}Mapper.updateByPrimaryKey(record);
     }
 
