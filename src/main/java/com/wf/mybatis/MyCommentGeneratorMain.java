@@ -1,4 +1,4 @@
-package com.wf.mabatis;
+package com.wf.mybatis;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

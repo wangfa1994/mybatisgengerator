@@ -1,4 +1,4 @@
-package com.wf.mabatis;
+package com.wf.mybatis;
 
 
 import java.text.SimpleDateFormat;  

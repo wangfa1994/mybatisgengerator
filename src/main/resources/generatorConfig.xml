@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <classPathEntry
-            location="/Users/wangfa/.m2/repository/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar"/>
+            location="F:\softcollection\maven\abrepository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
     <!--defaultModelType="flat" 解决text->blog -->
     <context id="context" targetRuntime="MyBatis3" defaultModelType="flat">
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -11,14 +11,17 @@
         <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
+
+        <!--自定义plugin 用于移除setter getter 方法 结合Lombok使用 -->
+        <plugin type="com.wf.mybatis.MyNoSetterPluginAdapter"/>
         <!-- 注释生成器 -->
-        <commentGenerator type="com.wf.mabatis.MyCommentGenerator" >
+        <commentGenerator type="com.wf.mybatis.MyCommentGenerator" >
             <!-- 是否去除自动生成的注释 true：是 ： false:否   -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
         <!-- 连接数据库 -->
-        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/student" driverClass="com.mysql.jdbc.Driver"
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/sharding_jdbc_coursedb" driverClass="com.mysql.jdbc.Driver"
                         userId="root" password="root"/>
 
 
@@ -48,7 +51,7 @@
         <!--<table tableName="order_package"/>-->
 
         <!-- 当生成策略为MyBatis3时， table配置 -->
-        <table tableName="student"
+        <table tableName="course_1"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
